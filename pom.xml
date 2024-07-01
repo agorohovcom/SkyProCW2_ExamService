@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.agorohov</groupId>
-    <artifactId>SkyProCW2</artifactId>
+    <artifactId>SkyProCW2_ExamService</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>SkyProCW2</name>
-    <description>SKy Pro Course Work 2</description>
+    <description>Sky Pro Course Work 2 - Exam Service</description>
     <url/>
     <licenses>
         <license/>

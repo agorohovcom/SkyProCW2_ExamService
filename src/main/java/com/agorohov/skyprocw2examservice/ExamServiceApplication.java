@@ -1,13 +1,13 @@
-package com.agorohov.skyprocw2;
+package com.agorohov.skyprocw2examservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SkyProCw2Application {
+public class ExamServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SkyProCw2Application.class, args);
+        SpringApplication.run(ExamServiceApplication.class, args);
     }
 
 }

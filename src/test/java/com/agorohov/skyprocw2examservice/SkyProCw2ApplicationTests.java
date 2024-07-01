@@ -1,4 +1,4 @@
-package com.agorohov.skyprocw2;
+package com.agorohov.skyprocw2examservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
