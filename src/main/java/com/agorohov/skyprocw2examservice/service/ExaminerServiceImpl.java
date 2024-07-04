@@ -1,5 +1,6 @@
 package com.agorohov.skyprocw2examservice.service;
 
+import com.agorohov.skyprocw2examservice.exception.NotCorrectAmountQuestionsGetFromRepositoryException;
 import com.agorohov.skyprocw2examservice.model.Question;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,9 @@ public class ExaminerServiceImpl implements ExaminerService {
     @Override
     public Collection<Question> getQuestions(int amount) {
         Set<Question> result = new HashSet<>();
+        if (amount > questionService.getAll().size() || amount < 1) {
+            throw new NotCorrectAmountQuestionsGetFromRepositoryException("Некорректное количество вопросов");
+        }
         while (result.size() < amount) {
             result.add(questionService.getRandomQuestion());
         }
