@@ -8,7 +8,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice()
 public class ExamServiceExceptionHandler {
 
-    @ExceptionHandler({NotCorrectAmountQuestionsGetFromRepositoryException.class,})
+    @ExceptionHandler({
+            NotCorrectAmountQuestionsGetFromRepositoryException.class,
+            QuestionWasNotAddedException.class,
+            ParamIsNotPresentException.class,
+            QuestionWasNotRemovedException.class,
+            QuestionInNotExistException.class,
+            QuestionIsAlreadyExistException.class
+    })
     public ResponseEntity<String> handleEmployeeExceptions(RuntimeException e) {
         e.printStackTrace();
         return ResponseEntity

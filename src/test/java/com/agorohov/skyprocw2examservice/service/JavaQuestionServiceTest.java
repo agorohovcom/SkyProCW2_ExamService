@@ -1,26 +1,61 @@
 package com.agorohov.skyprocw2examservice.service;
 
+import com.agorohov.skyprocw2examservice.exception.ParamIsNotPresentException;
+import com.agorohov.skyprocw2examservice.exception.QuestionInNotExistException;
+import com.agorohov.skyprocw2examservice.exception.QuestionIsAlreadyExistException;
+import com.agorohov.skyprocw2examservice.repository.QuestionRepository;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+import static com.agorohov.skyprocw2examservice.constants.Constants.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.when;
+
+@ExtendWith(MockitoExtension.class)
 class JavaQuestionServiceTest {
 
+    @InjectMocks
+    private JavaQuestionService out;
+
+    @Mock
+    private QuestionRepository questionRepositoryMock;
+
     @Test
-    void add() {
+    void shouldAddQuestionCorrectly() {
+        assertThrows(ParamIsNotPresentException.class, () -> out.add(null));
+        assertThrows(ParamIsNotPresentException.class, () -> out.add(EMPTY_STRING, QUESTION_ANSWER));
+        assertThrows(ParamIsNotPresentException.class, () -> out.add(null, QUESTION_ANSWER));
+        assertThrows(ParamIsNotPresentException.class, () -> out.add(QUESTION_TEXT, EMPTY_STRING));
+        assertThrows(ParamIsNotPresentException.class, () -> out.add(QUESTION_TEXT, null));
+
+        when(questionRepositoryMock.isQuestionPresent(QUESTION_1)).thenReturn(false);
+        assertEquals(QUESTION_1, out.add(QUESTION_1));
+
+        when(questionRepositoryMock.isQuestionPresent(SAME_QUESTION)).thenReturn(true);
+        assertThrows(QuestionIsAlreadyExistException.class, () -> out.add(SAME_QUESTION));
     }
 
     @Test
-    void testAdd() {
+    void shouldRemoveQuestionCorrectly() {
+        assertThrows(ParamIsNotPresentException.class, () -> out.remove(null));
+
+        when(questionRepositoryMock.isQuestionPresent(QUESTION_1)).thenReturn(true);
+        assertEquals(QUESTION_1, out.remove(QUESTION_1));
+
+        when(questionRepositoryMock.isQuestionPresent(NO_SUCH_QUESTION)).thenReturn(false);
+        assertThrows(QuestionInNotExistException.class, () -> out.remove(NO_SUCH_QUESTION));
     }
 
     @Test
-    void remove() {
-    }
+    void shouldGetAllQuestionsCorrectly() {
+        when(questionRepositoryMock.getRepository()).thenReturn(ALL_QUESTIONS);
+        assertEquals(ALL_QUESTIONS, out.getAll());
 
-    @Test
-    void getAll() {
-    }
-
-    @Test
-    void getRandomQuestion() {
+        when(questionRepositoryMock.getRepository()).thenReturn(EMPTY_QUESTIONS_COLLECTION);
+        assertEquals(EMPTY_QUESTIONS_COLLECTION, out.getAll());
     }
 }

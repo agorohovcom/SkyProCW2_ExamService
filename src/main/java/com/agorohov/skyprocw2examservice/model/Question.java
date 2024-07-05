@@ -7,6 +7,9 @@ public class Question {
     private final String answer;
 
     public Question(String question, String answer) {
+//        if (question == null || question.isBlank() || answer == null || answer.isBlank()) {
+//            throw new ParamIsNotPresentException("Недопустимый вопрос или ответ");
+//        }
         this.question = question;
         this.answer = answer;
     }

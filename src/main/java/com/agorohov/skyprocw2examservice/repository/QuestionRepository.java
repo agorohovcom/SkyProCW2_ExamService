@@ -36,11 +36,15 @@ public class QuestionRepository {
         return List.copyOf(repository).get(index);
     }
 
-    public void addQuestion(Question question) {
-        repository.add(question);
+    public boolean addQuestion(Question question) {
+        return repository.add(question);
     }
 
     public boolean removeQuestion(Question question) {
         return repository.remove(question);
+    }
+
+    public boolean isQuestionPresent(Question question) {
+        return repository.contains(question);
     }
 }
