@@ -11,16 +11,16 @@ import java.util.Random;
 public class JavaQuestionService implements QuestionService {
 
     private final QuestionRepository questionRepository;
+    private final Random random;
 
     public JavaQuestionService(QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
+        this.random = new Random();
     }
 
     @Override
     public Question add(String question, String answer) {
-        Question result = new Question(question, answer);
-        questionRepository.addQuestion(result);
-        return result;
+        return add(new Question(question, answer));
     }
 
     @Override
@@ -42,6 +42,6 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Question getRandomQuestion() {
-        return questionRepository.getQuestion(new Random().nextInt(questionRepository.getSize()));
+        return questionRepository.getQuestion(random.nextInt(questionRepository.getSize()));
     }
 }
