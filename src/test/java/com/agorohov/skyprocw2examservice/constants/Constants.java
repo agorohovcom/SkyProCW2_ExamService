@@ -19,4 +19,8 @@ public class Constants {
 
     public static final Collection<Question> ALL_QUESTIONS = Set.of(QUESTION_1, QUESTION_2, QUESTION_3);
     public static final Collection<Question> EMPTY_QUESTIONS_COLLECTION = Set.of();
+
+    public static final int NEGATIVE = -1;
+    public static final int ZERO = 0;
+    public static final int MORE_THAN_SIZE = ALL_QUESTIONS.size() + 1;
 }
