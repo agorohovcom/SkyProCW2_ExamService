@@ -13,15 +13,15 @@ import java.util.List;
 import java.util.Random;
 
 @Service
-@Qualifier("javaQuestionService")
-public class JavaQuestionService implements QuestionService {
+@Qualifier("mathQuestionService")
+public class MathQuestionService implements QuestionService {
 
     private final QuestionRepository questionRepository;
     private final Random random;
 
-    public JavaQuestionService(@Qualifier("javaQuestionRepository") QuestionRepository questionRepository) {
+    public MathQuestionService(@Qualifier("mathQuestionRepository") QuestionRepository questionRepository, Random random) {
         this.questionRepository = questionRepository;
-        this.random = new Random();
+        this.random = random;
     }
 
     @Override

@@ -4,27 +4,30 @@ import com.agorohov.skyprocw2examservice.exception.NotCorrectAmountQuestionsGetF
 import com.agorohov.skyprocw2examservice.model.Question;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class ExaminerServiceImpl implements ExaminerService {
 
-    private final QuestionService questionService;
+    private final List<QuestionService> questionServices;
+    private final Random random;
 
-    public ExaminerServiceImpl(QuestionService questionService) {
-        this.questionService = questionService;
+    public ExaminerServiceImpl(List<QuestionService> questionServices, Random random) {
+        this.questionServices = questionServices;
+        this.random = random;
     }
 
     @Override
     public Collection<Question> getQuestions(int amount) {
         Set<Question> result = new HashSet<>();
-        if (amount > questionService.getAll().size() || amount < 1) {
+        int allQuestionsAmount = questionServices.stream()
+                .mapToInt((e) -> e.getAll().size())
+                .sum();
+        if (amount > allQuestionsAmount || amount < 1) {
             throw new NotCorrectAmountQuestionsGetFromRepositoryException("Некорректное количество вопросов");
         }
         while (result.size() < amount) {
-            result.add(questionService.getRandomQuestion());
+            result.add(questionServices.get(random.nextInt(questionServices.size())).getRandomQuestion());
         }
         return result;
     }
