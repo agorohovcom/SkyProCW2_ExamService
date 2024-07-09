@@ -24,11 +24,11 @@ public class MathQuestionRepository implements QuestionRepository {
 
     @PostConstruct
     private void init() {
-        repository.add(new Question("Вопрос по Math 1", "Ответ по Math 1"));
-        repository.add(new Question("Вопрос по Math 2", "Ответ по Math 2"));
-        repository.add(new Question("Вопрос по Math 3", "Ответ по Math 3"));
-        repository.add(new Question("Вопрос по Math 4", "Ответ по Math 4"));
-        repository.add(new Question("Вопрос по Math 5", "Ответ по Math 5"));
+//        repository.add(new Question("Вопрос по Math 1", "Ответ по Math 1"));
+//        repository.add(new Question("Вопрос по Math 2", "Ответ по Math 2"));
+//        repository.add(new Question("Вопрос по Math 3", "Ответ по Math 3"));
+//        repository.add(new Question("Вопрос по Math 4", "Ответ по Math 4"));
+//        repository.add(new Question("Вопрос по Math 5", "Ответ по Math 5"));
     }
 
     public Collection<Question> getAll() {

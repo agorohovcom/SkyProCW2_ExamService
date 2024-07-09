@@ -24,11 +24,11 @@ public class JavaQuestionRepository implements QuestionRepository {
 
     @PostConstruct
     private void init() {
-        repository.add(new Question("Вопрос по Java 1", "Ответ по Java 1"));
-        repository.add(new Question("Вопрос по Java 2", "Ответ по Java 2"));
-        repository.add(new Question("Вопрос по Java 3", "Ответ по Java 3"));
-        repository.add(new Question("Вопрос по Java 4", "Ответ по Java 4"));
-        repository.add(new Question("Вопрос по Java 5", "Ответ по Java 5"));
+//        repository.add(new Question("Вопрос по Java 1", "Ответ по Java 1"));
+//        repository.add(new Question("Вопрос по Java 2", "Ответ по Java 2"));
+//        repository.add(new Question("Вопрос по Java 3", "Ответ по Java 3"));
+//        repository.add(new Question("Вопрос по Java 4", "Ответ по Java 4"));
+//        repository.add(new Question("Вопрос по Java 5", "Ответ по Java 5"));
     }
 
     public Collection<Question> getAll() {

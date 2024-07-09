@@ -10,6 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 import static com.agorohov.skyprocw2examservice.constants.Constants.*;
@@ -24,7 +25,7 @@ class ExaminerServiceImplTest {
     ExaminerServiceImpl out;
 
     @Mock
-    private JavaQuestionService javaQuestionServiceMock;
+    private List<QuestionService> javaQuestionServicesMock;
 
     @BeforeEach
     public void setUp() {
