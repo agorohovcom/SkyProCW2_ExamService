@@ -16,11 +16,14 @@ import java.util.Set;
 @Qualifier("javaQuestionRepository")
 public class JavaQuestionRepository implements QuestionRepository {
 
-    private Set<Question> repository;
+    private final Set<Question> repository;
+
+    public JavaQuestionRepository() {
+        repository = new HashSet<>();
+    }
 
     @PostConstruct
     private void init() {
-        repository = new HashSet<>();
         repository.add(new Question("Вопрос по Java 1", "Ответ по Java 1"));
         repository.add(new Question("Вопрос по Java 2", "Ответ по Java 2"));
         repository.add(new Question("Вопрос по Java 3", "Ответ по Java 3"));

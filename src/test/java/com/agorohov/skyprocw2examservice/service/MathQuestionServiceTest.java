@@ -3,7 +3,7 @@ package com.agorohov.skyprocw2examservice.service;
 import com.agorohov.skyprocw2examservice.exception.ParamIsNotPresentException;
 import com.agorohov.skyprocw2examservice.exception.QuestionInNotExistException;
 import com.agorohov.skyprocw2examservice.exception.QuestionIsAlreadyExistException;
-import com.agorohov.skyprocw2examservice.repository.JavaQuestionRepository;
+import com.agorohov.skyprocw2examservice.repository.MathQuestionRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,13 +17,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class JavaQuestionServiceTest {
+class MathQuestionServiceTest {
 
     @InjectMocks
-    private JavaQuestionService out;
+    private MathQuestionService out;
 
     @Mock
-    private JavaQuestionRepository questionRepositoryMock;
+    private MathQuestionRepository questionRepositoryMock;
 
     @BeforeEach
     void setUp() {
