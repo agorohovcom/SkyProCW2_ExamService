@@ -11,11 +11,11 @@ import java.util.stream.Collectors;
 public class ExaminerServiceImpl implements ExaminerService {
 
     private final List<QuestionService> questionServices;
+    private final Random random;
 
-    private final Random random = new Random();
-
-    public ExaminerServiceImpl(List<QuestionService> questionServices) {
+    public ExaminerServiceImpl(List<QuestionService> questionServices, Random random) {
         this.questionServices = questionServices;
+        this.random = random;
     }
 
     @Override

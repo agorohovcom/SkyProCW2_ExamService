@@ -11,6 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 import java.util.stream.Stream;
 
 import static com.agorohov.skyprocw2examservice.constants.Constants.*;
@@ -36,7 +37,7 @@ class ExaminerServiceImplTest {
     @BeforeEach
     void setUp() {
         questionServices = List.of(service1, service2, service3);
-        out = new ExaminerServiceImpl(questionServices);
+        out = new ExaminerServiceImpl(questionServices, new Random());
 
         when(service1.getAll()).thenReturn(List.of(QUESTION_1, QUESTION_2));
         when(service2.getAll()).thenReturn(List.of(QUESTION_3));

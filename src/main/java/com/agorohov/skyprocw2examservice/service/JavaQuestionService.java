@@ -19,9 +19,9 @@ public class JavaQuestionService implements QuestionService {
     private final QuestionRepository questionRepository;
     private final Random random;
 
-    public JavaQuestionService(@Qualifier("javaQuestionRepository") QuestionRepository questionRepository) {
+    public JavaQuestionService(@Qualifier("javaQuestionRepository") QuestionRepository questionRepository, Random random) {
         this.questionRepository = questionRepository;
-        this.random = new Random();
+        this.random = random;
     }
 
     @Override
