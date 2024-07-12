@@ -23,4 +23,12 @@ public class ExamServiceExceptionHandler {
                 .body(e.getMessage());
     }
 
+    @ExceptionHandler(UnsupportedExamServiceOperationException.class)
+    public ResponseEntity<String> handleUnsupportedExamServiceOperationException(RuntimeException e) {
+        e.printStackTrace();
+        return ResponseEntity
+                .status(HttpStatus.METHOD_NOT_ALLOWED)
+                .body(e.getMessage());
+    }
+
 }
