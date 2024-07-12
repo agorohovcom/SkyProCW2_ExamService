@@ -12,11 +12,10 @@ public class ExaminerServiceImpl implements ExaminerService {
 
     private final List<QuestionService> questionServices;
 
-    private final Random random;
+    private final Random random = new Random();
 
-    public ExaminerServiceImpl(List<QuestionService> questionServices, Random random) {
+    public ExaminerServiceImpl(List<QuestionService> questionServices) {
         this.questionServices = questionServices;
-        this.random = random;
     }
 
     @Override
@@ -28,6 +27,7 @@ public class ExaminerServiceImpl implements ExaminerService {
                 .collect(Collectors.toCollection(ArrayList::new));
         // Получаем общее кол-во вопросов из всех сервисов
         int totalQuestionsAmount = servicesWithQuestions.stream()
+                .filter(Objects::nonNull)
                 .mapToInt((e) -> e.getAll().size())
                 .sum();
         // Проверяем, в допустимых ли пределах amount

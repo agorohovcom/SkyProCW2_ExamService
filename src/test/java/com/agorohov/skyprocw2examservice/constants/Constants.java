@@ -3,6 +3,7 @@ package com.agorohov.skyprocw2examservice.constants;
 import com.agorohov.skyprocw2examservice.model.Question;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 public class Constants {
@@ -20,7 +21,10 @@ public class Constants {
     public static final Collection<Question> ALL_QUESTIONS = Set.of(QUESTION_1, QUESTION_2, QUESTION_3);
     public static final Collection<Question> EMPTY_QUESTIONS_COLLECTION = Set.of();
 
+    public static final Collection<Question> GET_QUESTIONS_RESULT = List.of(QUESTION_1, QUESTION_3);
+
     public static final int NEGATIVE = -1;
     public static final int ZERO = 0;
-    public static final int MORE_THAN_SIZE = ALL_QUESTIONS.size() + 1;
+    // если сделать + 1, то тест будет в бесконечном цикле "while (result.size() < amount)"
+    public static final int MORE_THEN_GET_QUESTIONS_RESULT_SIZE = GET_QUESTIONS_RESULT.size() + 2;
 }
