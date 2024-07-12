@@ -45,8 +45,35 @@ public class MathQuestionService implements QuestionService {
 
     @Override
     public Question getRandomQuestion() {
-
-        return null;
+        int num1 = random.nextInt(1000);
+        int num2 = random.nextInt(1000);
+        long answer = 0;
+        char operation = ' ';
+        switch (random.nextInt(4)) {
+            case 0:
+                operation = '+';
+                answer = num1 + num2;
+                break;
+            case 1:
+                operation = '-';
+                answer = num1 - num2;
+                break;
+            case 2:
+                operation = '*';
+                answer = num1 * num2;
+                break;
+            case 3:
+                operation = '/';
+                while (num2 == 0) {
+                    num2 = random.nextInt(1000);
+                }
+                answer = num1 / num2;
+                break;
+        }
+        ;
+        String questionText = String.format("Сколько будет %d %s %d", num1, operation, num2);
+        String questionAnswer = String.format("Ответ: %d", answer);
+        return new Question(questionText, questionAnswer);
     }
 
     private void throwUnsupportedExamServiceOperationException() {
