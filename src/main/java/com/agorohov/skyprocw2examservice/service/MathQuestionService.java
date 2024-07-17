@@ -82,7 +82,7 @@ public class MathQuestionService implements QuestionService {
                 break;
         }
 
-        String questionText = String.format("Сколько будет %d %s %d", num1, operation, num2);
+        String questionText = String.format("Сколько будет %d %s %d?", num1, operation, num2);
         String questionAnswer = String.format("Ответ: %.2f", answer);
 
         result = new Question(questionText, questionAnswer);
